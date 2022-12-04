@@ -20,6 +20,13 @@ func C(name string) Column {
 	return Column{name: name}
 }
 
+func (c Column) Not(ary any) Predicate {
+	return Predicate{
+		left:  c,
+		op:    opNOT,
+		right: valueOf(ary),
+	}
+}
 func (c Column) EQ(ary any) Predicate {
 	return Predicate{
 		left:  c,

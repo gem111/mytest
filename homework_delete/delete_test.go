@@ -68,6 +68,14 @@ func TestDeleter_Build(t *testing.T) {
 				Args: []any{[]any{2, 3, 4, 5, 7}},
 			},
 		},
+		{
+			name:    "where not",
+			builder: (&Deleter[TestModel]{}).From("`test_model`").Where(C("Id").Not(111)),
+			wantQuery: &Query{
+				SQL:  "DELETE FROM `test_model` WHERE `Id` NOT ?;",
+				Args: []any{111},
+			},
+		},
 	}
 
 	for _, tc := range testCases {

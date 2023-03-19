@@ -7,3 +7,7 @@ type Context struct {
 	Resp       http.ResponseWriter
 	PathParams map[string]string
 }
+
+func Render() {
+
+}
